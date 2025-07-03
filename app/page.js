@@ -170,7 +170,7 @@ export default function TicTacToe() {
       
       {/* Footer */}
       <div className="mt-8 text-center text-purple-200 text-sm">
-        <p>Created with ❤️ using React | Classic Tic Tac Toe</p>
+        <p>Created with ❤️ using Next.js | Classic Tic Tac Toe</p>
       </div>
     </div>
   );
@@ -328,54 +328,64 @@ function GameBoard({
   
   return (
     <div className="animate-fadeIn">
-      {/* Players Info */}
-    <div className="flex justify-between mb-6">
-  <div className={`p-3 rounded-lg flex-1 mr-2 transition-all ${
-    currentPlayer.symbol === player1Symbol 
-      ? 'bg-purple-700/50 border-2 border-purple-500' 
-      : 'bg-gray-800/50'
-  }`}>
-    <div className="flex justify-between items-center">
-      <div className="flex items-center">
-        <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-lg font-bold mr-3">
-          {player1Symbol}
+      {/* Players Info - Responsive Layout */}
+      <div className="flex flex-col sm:flex-row justify-between mb-6">
+        {/* Player 1 Card */}
+        <div className={`p-3 rounded-lg sm:flex-1 mb-4 sm:mb-0 sm:mr-2 transition-all ${
+          currentPlayer.symbol === player1Symbol 
+            ? 'bg-purple-700/50 border-2 border-purple-500' 
+            : 'bg-gray-800/50'
+        }`}>
+          <div className="flex justify-between items-center">
+            <div className="flex items-center">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-blue-500 flex items-center justify-center text-md sm:text-lg font-bold mr-2 sm:mr-3">
+                {player1Symbol}
+              </div>
+              <div>
+                <p className="text-xs sm:text-sm text-purple-300">Player 1</p>
+                <p className="font-bold text-white text-sm sm:text-base truncate max-w-[80px] sm:max-w-none">{player1Name}</p>
+              </div>
+            </div>
+            <div className="text-right">
+              <span className="text-lg sm:text-xl font-bold text-white">{score[player1Symbol]}</span>
+            </div>
+          </div>
         </div>
-        <div>
-          <p className="text-sm text-purple-300">Player 1</p>
-          <p className="font-bold text-white">{player1Name}</p>
+        
+        {/* VS Indicator */}
+        <div className="hidden sm:flex text-white items-center justify-center px-4">
+          <span className="text-2xl font-bold">VS</span>
+        </div>
+        
+        {/* Mobile VS Separator */}
+        <div className="sm:hidden flex items-center justify-center my-2">
+          <div className="flex-1 h-px bg-purple-400"></div>
+          <span className="px-4 text-white font-bold text-lg">VS</span>
+          <div className="flex-1 h-px bg-purple-400"></div>
+        </div>
+        
+        {/* Player 2 Card */}
+        <div className={`p-3 rounded-lg sm:flex-1 sm:ml-2 mt-4 sm:mt-0 transition-all ${
+          currentPlayer.symbol === player2Symbol 
+            ? 'bg-purple-700/50 border-2 border-purple-500' 
+            : 'bg-gray-800/50'
+        }`}>
+          <div className="flex justify-between items-center">
+            <div className="flex items-center">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-yellow-500 flex items-center justify-center text-md sm:text-lg font-bold mr-2 sm:mr-3">
+                {player2Symbol}
+              </div>
+              <div>
+                <p className="text-xs sm:text-sm text-purple-300">Player 2</p>
+                <p className="font-bold text-white text-sm sm:text-base truncate max-w-[80px] sm:max-w-none">{player2Name}</p>
+              </div>
+            </div>
+            <div className="text-right">
+              <span className="text-lg sm:text-xl font-bold text-white">{score[player2Symbol]}</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="text-right">
-        <span className="text-xl font-bold text-white">{score[player1Symbol]}</span>
-      </div>
-    </div>
-  </div>
-  
-  <div className="text-white flex items-center justify-center px-4">
-    <span className="text-2xl font-bold">VS</span>
-  </div>
-  
-  <div className={`p-3 rounded-lg flex-1 ml-2 transition-all ${
-    currentPlayer.symbol === player2Symbol 
-      ? 'bg-purple-700/50 border-2 border-purple-500' 
-      : 'bg-gray-800/50'
-  }`}>
-    <div className="flex justify-between items-center">
-      <div className="flex items-center">
-        <div className="w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center text-lg font-bold mr-3">
-          {player2Symbol}
-        </div>
-        <div>
-          <p className="text-sm text-purple-300">Player 2</p>
-          <p className="font-bold text-white">{player2Name}</p>
-        </div>
-      </div>
-      <div className="text-right">
-        <span className="text-xl font-bold text-white">{score[player2Symbol]}</span>
-      </div>
-    </div>
-  </div>
-</div>
       
       {/* Game Status */}
       <div className="bg-gradient-to-r from-purple-600/30 to-indigo-600/30 p-4 rounded-xl mb-6 text-center border border-purple-500/30">
@@ -386,12 +396,12 @@ function GameBoard({
               {winnerInfo.name} wins!
               <span className="ml-2">🎉</span>
             </div>
-            <p className="text-purple-200 mt-1">with symbol &apos;{winnerInfo.symbol}&apos;</p>
+            <p className="text-purple-200 mt-1">with symbol '{winnerInfo.symbol}'</p>
           </div>
         ) : isDraw ? (
           <div className="text-2xl font-bold text-yellow-400 flex items-center justify-center">
             <span className="mr-2">🤝</span>
-            It&apos;s a draw!
+            It's a draw!
             <span className="ml-2">🤝</span>
           </div>
         ) : (
