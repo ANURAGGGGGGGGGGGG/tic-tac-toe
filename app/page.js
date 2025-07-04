@@ -128,15 +128,12 @@ export default function TicTacToe() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 to-indigo-800 flex flex-col items-center justify-center p-4">
-      {/* Game Container */}
       <div className={`w-full max-w-3xl bg-white/10 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden transition-all duration-700 ${animating ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}>
-        {/* Header */}
         <div className="bg-gradient-to-r from-purple-600 to-indigo-600 p-6 text-center">
           <h1 className="text-4xl font-bold text-white drop-shadow-lg">Tic Tac Toe</h1>
           <p className="text-purple-200 mt-2">Classic game with a modern twist</p>
         </div>
         
-        {/* Main Content */}
         <div className="p-6">
           {!gameStarted ? (
             <PlayerSetup 
@@ -168,7 +165,6 @@ export default function TicTacToe() {
         </div>
       </div>
       
-      {/* Footer */}
       <div className="mt-8 text-center text-purple-200 text-sm">
         <p>Created with ❤️ using Next.js | Classic Tic Tac Toe</p>
       </div>
@@ -193,7 +189,6 @@ function PlayerSetup({
         <h2 className="text-2xl font-bold text-white text-center mb-6">Player Setup</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Player 1 Card */}
           <div className="bg-gradient-to-br from-purple-600/20 to-indigo-600/20 p-5 rounded-xl border border-purple-500/30">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-xl font-semibold text-purple-200">Player 1</h3>
@@ -244,7 +239,6 @@ function PlayerSetup({
             </div>
           </div>
           
-          {/* Player 2 Card */}
           <div className="bg-gradient-to-br from-purple-600/20 to-indigo-600/20 p-5 rounded-xl border border-purple-500/30">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-xl font-semibold text-purple-200">Player 2</h3>
@@ -295,7 +289,6 @@ function PlayerSetup({
         </div>
       </div>
       
-      {/* Start Button */}
       <button
         onClick={startGame}
         disabled={!player1Name.trim() || !player2Name.trim()}
@@ -328,9 +321,7 @@ function GameBoard({
   
   return (
     <div className="animate-fadeIn">
-      {/* Players Info - Responsive Layout */}
       <div className="flex flex-col sm:flex-row justify-between mb-6">
-        {/* Player 1 Card */}
         <div className={`p-3 rounded-lg sm:flex-1 mb-4 sm:mb-0 sm:mr-2 transition-all ${
           currentPlayer.symbol === player1Symbol 
             ? 'bg-purple-700/50 border-2 border-purple-500' 
@@ -352,19 +343,16 @@ function GameBoard({
           </div>
         </div>
         
-        {/* VS Indicator */}
         <div className="hidden sm:flex text-white items-center justify-center px-4">
           <span className="text-2xl font-bold">VS</span>
         </div>
         
-        {/* Mobile VS Separator */}
         <div className="sm:hidden flex items-center justify-center my-2">
           <div className="flex-1 h-px bg-purple-400"></div>
           <span className="px-4 text-white font-bold text-lg">VS</span>
           <div className="flex-1 h-px bg-purple-400"></div>
         </div>
         
-        {/* Player 2 Card */}
         <div className={`p-3 rounded-lg sm:flex-1 sm:ml-2 mt-4 sm:mt-0 transition-all ${
           currentPlayer.symbol === player2Symbol 
             ? 'bg-purple-700/50 border-2 border-purple-500' 
@@ -387,7 +375,6 @@ function GameBoard({
         </div>
       </div>
       
-      {/* Game Status */}
       <div className="bg-gradient-to-r from-purple-600/30 to-indigo-600/30 p-4 rounded-xl mb-6 text-center border border-purple-500/30">
         {winner ? (
           <div className="animate-bounce">
@@ -419,7 +406,6 @@ function GameBoard({
         )}
       </div>
       
-      {/* Game Board */}
       <div className="grid grid-cols-3 gap-3 mb-8 bg-gradient-to-br from-purple-700/30 to-indigo-700/30 p-4 rounded-xl border border-purple-500/30">
         {board.map((cell, index) => (
           <button
@@ -437,7 +423,6 @@ function GameBoard({
         ))}
       </div>
       
-      {/* Game Controls */}
       <div className="flex flex-col sm:flex-row gap-3">
         <button
           onClick={restartGame}
