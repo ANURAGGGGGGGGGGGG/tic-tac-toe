@@ -383,12 +383,12 @@ function GameBoard({
               {winnerInfo.name} wins!
               <span className="ml-2">🎉</span>
             </div>
-            <p className="text-purple-200 mt-1">with symbol '{winnerInfo.symbol}'</p>
+            <p className="text-purple-200 mt-1">with symbol &apos;{winnerInfo.symbol}&apos;</p>
           </div>
         ) : isDraw ? (
           <div className="text-2xl font-bold text-yellow-400 flex items-center justify-center">
             <span className="mr-2">🤝</span>
-            It's a draw!
+            It&apos;s a draw!
             <span className="ml-2">🤝</span>
           </div>
         ) : (
